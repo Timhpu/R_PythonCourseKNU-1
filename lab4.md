@@ -1,5 +1,5 @@
 **Для лабораторної роботи необхідно завантажити файл з даними. В RStudio файл необхідно прочитати за допомогою команди read.csv.**  
-*Note: path is C:\Users\{User}\Documents\hw1_data.csv*
+*Note: path is C:\\Users\\{User}\\Documents\\hw1_data.csv*
 ```{r}
 data <- read.csv("hw1_data.csv")
 ```
