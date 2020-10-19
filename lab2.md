@@ -8,7 +8,7 @@ print(v[20:29][0:10])  # to ensure we get 10 elements
 print(v[v>0])
 ```
 
-**Result**
+**Result:**  
 *Note: random values (rnorm(), sample()) may differ.*
 ```
 v <- rnorm(100)
@@ -41,7 +41,7 @@ print(y[[2]][10])
 print(y$cc)
 ```
 
-**Result**
+**Result:**
 ```
 > y <- data.frame(a=rnorm(100), b=1:100, cc=sample(letters, 100, replace=TRUE))
 > print(y[c(91:100), ])
@@ -89,7 +89,7 @@ print(mean(z[!is.na(z)]))
 print(mean(z, na.rm=TRUE))  # another way
 ```
 
-**Result**
+**Result:**
 ```
 > z <- c(1, 2, 3, NA, 4, NA, 5, NA)
 > print(z[!is.na(z)])
