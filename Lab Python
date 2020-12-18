@@ -1,9 +1,5 @@
-
-  {
-   "cell_type": "markdown",
-   "metadata": {
-    "id": "GRruY-msDnry"
-   },
+"cell_type": "markdown",
+   "metadata": {},
    "source": [
     "# Assignment 2 - Pandas Introduction\n",
     "All questions are weighted the same in this assignment.\n",
@@ -17,29 +13,12 @@
    "cell_type": "code",
    "execution_count": 1,
    "metadata": {
-    "colab": {
-     "base_uri": "https://localhost:8080/",
-     "height": 443
-    },
-    "executionInfo": {
-     "elapsed": 1821,
-     "status": "error",
-     "timestamp": 1603824337707,
-     "user": {
-      "displayName": "Anastasiia Tolstokorova",
-      "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14Gh24BQzVGI8GwTQn_-C78Z0zoMeKxsn5KjX-jnpjg=s64",
-      "userId": "15302702356410131317"
-     },
-     "user_tz": -120
-    },
-    "id": "jaNbcDSJDnr1",
     "nbgrader": {
      "grade": false,
      "grade_id": "1",
      "locked": false,
      "solution": false
-    },
-    "outputId": "c0f3b7ab-c90e-4c49-bb75-c4fd9ace1cfc"
+    }
    },
    "outputs": [
     {
@@ -235,9 +214,7 @@
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "7BUZIweKDnsB"
-   },
+   "metadata": {},
    "source": [
     "### Question 0 (Example)\n",
     "\n",
@@ -248,26 +225,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
-   "metadata": {
-    "colab": {
-     "base_uri": "https://localhost:8080/",
-     "height": 306
-    },
-    "executionInfo": {
-     "elapsed": 1620,
-     "status": "ok",
-     "timestamp": 1602233703214,
-     "user": {
-      "displayName": "Anastasiia Tolstokorova",
-      "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14Gh24BQzVGI8GwTQn_-C78Z0zoMeKxsn5KjX-jnpjg=s64",
-      "userId": "15302702356410131317"
-     },
-     "user_tz": -180
-    },
-    "id": "KBAtCZEEDnsD",
-    "outputId": "5bc366de-d894-4157-e5e9-0a6b68dec345"
-   },
+   "execution_count": 8,
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -291,7 +250,7 @@
        "Name: Afghanistan, dtype: object"
       ]
      },
-     "execution_count": 2,
+     "execution_count": 8,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -311,9 +270,7 @@
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "-HDyXdfaDnsL"
-   },
+   "metadata": {},
    "source": [
     "### Question 1\n",
     "Which country has won the most gold medals in summer games?\n",
@@ -323,15 +280,13 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 21,
    "metadata": {
-    "id": "PkF5LWKlDnsM",
     "nbgrader": {
      "grade": false,
      "locked": false,
      "solution": false
-    },
-    "outputId": "9df530dc-bfd9-4410-acca-cec5ceb8e3e9"
+    }
    },
    "outputs": [
     {
@@ -340,22 +295,21 @@
        "'United States'"
       ]
      },
-     "execution_count": 3,
+     "execution_count": 21,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "def answer_one():\n",
-    "    return df[df.Gold == max(df.Gold)].index[0]\n",
+    "    return df['Gold'].idxmax()\n",
+    "\n",
     "answer_one()"
    ]
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "G5POHbPvDnsT"
-   },
+   "metadata": {},
    "source": [
     "### Question 2\n",
     "Which country had the biggest difference between their summer and winter gold medal counts?\n",
@@ -365,10 +319,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
-   "metadata": {
-    "id": "cWF4mPtaDnsU"
-   },
+   "execution_count": 27,
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -376,24 +328,21 @@
        "'United States'"
       ]
      },
-     "execution_count": 4,
+     "execution_count": 27,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "def answer_two():\n",
-    "    dif = abs(df.Gold - df['Gold.1'])\n",
-    "    return df[dif == max(dif)].index[0]\n",
+    "    return (df['Gold'] - df['Gold.1']).idxmax()\n",
     "\n",
     "answer_two()"
    ]
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "FpYaZgBFDnsa"
-   },
+   "metadata": {},
    "source": [
     "### Question 3\n",
     "Which country has the biggest difference between their summer gold medal counts and winter gold medal counts relative to their total gold medal count? \n",
@@ -407,10 +356,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
-   "metadata": {
-    "id": "RbktVCo9Dnsb"
-   },
+   "execution_count": 24,
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -418,29 +365,23 @@
        "'Bulgaria'"
       ]
      },
-     "execution_count": 5,
+     "execution_count": 24,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "def answer_three():\n",
-    "    data = df[(df['Gold']>0) & (df['Gold.1']>0)]\n",
+    "    result = df.loc[(df['Gold'] >= 1) & (df['Gold.1'] >= 1)]\n",
+    "    result = (result['Gold'] - result['Gold.1'])/result['Gold.2']\n",
+    "    return result.idxmax()\n",
     "\n",
-    "    \n",
-    "    dif = abs(data.Gold - data['Gold.1'])/data['Gold.2']\n",
-    "\n",
-    "\n",
-    "    return data[dif == max(dif)].index[0]\n",
-    "\n",
-    "answer_three()\n"
+    "answer_three()"
    ]
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "RIr-x3m1Dnsh"
-   },
+   "metadata": {},
    "source": [
     "### Question 4\n",
     "Write a function that creates a Series called \"Points\" which is a weighted value where each gold medal (`Gold.2`) counts for 3 points, silver medals (`Silver.2`) for 2 points, and bronze medals (`Bronze.2`) for 1 point. The function should return only the column (a Series object) which you created.\n",
@@ -450,10 +391,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
-   "metadata": {
-    "id": "xeVO_-c0Dnsj"
-   },
+   "execution_count": 44,
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -472,23 +411,21 @@
        "Length: 146, dtype: int64"
       ]
      },
-     "execution_count": 8,
+     "execution_count": 44,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "def answer_four():\n",
-    "    return df['Gold.2']*3+df['Silver.2']*2+df['Bronze.2']\n",
+    "    return df['Gold.2']*3 + df['Silver.2']*2 + df['Bronze.2']\n",
     "\n",
-    "answer_four()\n"
+    "answer_four()"
    ]
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "Z6hwH13RDnso"
-   },
+   "metadata": {},
    "source": [
     "## Part 2\n",
     "For the next set of questions, we will be using census data from the [United States Census Bureau](http://www.census.gov/popest/data/counties/totals/2015/CO-EST2015-alldata.html). Counties are political and geographic subdivisions of states in the United States. This dataset contains population data for counties and states in the US from 2010 to 2015. [See this document](http://www.census.gov/popest/data/counties/totals/2015/files/CO-EST2015-alldata.pdf) for a description of the variable names.\n",
@@ -503,11 +440,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
-   "metadata": {
-    "id": "M-uGVHMUDnsp",
-    "scrolled": true
-   },
+   "execution_count": 2,
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -711,24 +645,20 @@
        "[5 rows x 100 columns]"
       ]
      },
-     "execution_count": 9,
+     "execution_count": 2,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "census_df = pd.read_csv('census.csv')\n",
-    "\n",
-    "\n",
     "census_df.head()"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 734,
-   "metadata": {
-    "id": "Ub7hi5HoDnsu"
-   },
+   "execution_count": 64,
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -736,23 +666,21 @@
        "'Texas'"
       ]
      },
-     "execution_count": 734,
+     "execution_count": 64,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "def answer_five():\n",
-    "    return census_df['STNAME'].value_counts().idxmax()\n",
+    "    return census_df[['COUNTY', 'STNAME']].groupby(['STNAME']).count()['COUNTY'].idxmax()\n",
     "\n",
     "answer_five()"
    ]
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "DWWyWJAADnsx"
-   },
+   "metadata": {},
    "source": [
     "### Question 6\n",
     "Only looking at the three most populous counties for each state, what are the three most populous states (in order of highest population to lowest population)? Use `CENSUS2010POP`.\n",
@@ -762,35 +690,30 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
-   "metadata": {
-    "id": "43IcWfdVDnsy"
-   },
+   "execution_count": 22,
+   "metadata": {},
    "outputs": [
     {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "['California', 'Texas', 'Illinois']\n"
-     ]
+     "data": {
+      "text/plain": [
+       "['California', 'Texas', 'Illinois']"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
     "def answer_six():\n",
-    "    df = census_df[census_df['SUMLEV'] == 50].sort_values(by=['STNAME','CENSUS2010POP']).groupby('STNAME').tail(3)\n",
-    "    df = df.reset_index().groupby(\"STNAME\").sum().sort_values(by=['CENSUS2010POP']).tail(3)\n",
-    "    l = list(df.index.values)\n",
-    "    l.reverse()\n",
-    "    return l\n",
+    "    return list(census_df[['STNAME', 'CENSUS2010POP']].groupby(['STNAME'])['CENSUS2010POP'].apply(lambda s: sum(s.sort_values(ascending=False).iloc[1:4])).nlargest(3).index)\n",
     "\n",
-    "print(answer_six())"
+    "answer_six()"
    ]
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "FoscLNxIDns2"
-   },
+   "metadata": {},
    "source": [
     "### Question 7\n",
     "Which county has had the largest absolute change in population within the period 2010-2015? (Hint: population values are stored in columns POPESTIMATE2010 through POPESTIMATE2015, you need to consider all six columns.)\n",
@@ -802,35 +725,31 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": 115,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "'Harris County'"
+       "'Texas'"
       ]
      },
-     "execution_count": 30,
+     "execution_count": 115,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "def answer_seven():\n",
-    "    population = census_df[['STNAME','CTYNAME','POPESTIMATE2015','POPESTIMATE2014','POPESTIMATE2013',\n",
-    "                    'POPESTIMATE2012','POPESTIMATE2011','POPESTIMATE2010']]\n",
-    "    population = population[population['STNAME'] != population['CTYNAME']].set_index('CTYNAME')\n",
-    "    return (population.max(axis = 1) - population.min(axis = 1)).idxmax()\n",
+    "    cols = ['POPESTIMATE2010', 'POPESTIMATE2011', 'POPESTIMATE2012', 'POPESTIMATE2013', 'POPESTIMATE2014', 'POPESTIMATE2015', ]\n",
+    "    return census_df.iloc[census_df.apply(lambda r: abs(max(r[cols] - min(r[cols]))), axis=1).idxmax()]['CTYNAME']\n",
     "\n",
     "answer_seven()"
    ]
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "id": "yaA8dn_KDns9"
-   },
+   "metadata": {},
    "source": [
     "### Question 8\n",
     "In this datafile, the United States is broken up into four regions using the \"REGION\" column. \n",
@@ -842,10 +761,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 45,
-   "metadata": {
-    "id": "lZrKDq9EDns-"
-   },
+   "execution_count": 135,
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -870,9 +787,6 @@
        "      <th></th>\n",
        "      <th>STNAME</th>\n",
        "      <th>CTYNAME</th>\n",
-       "      <th>REGION</th>\n",
-       "      <th>POPESTIMATE2014</th>\n",
-       "      <th>POPESTIMATE2015</th>\n",
        "    </tr>\n",
        "  </thead>\n",
        "  <tbody>\n",
@@ -880,105 +794,56 @@
        "      <th>896</th>\n",
        "      <td>Iowa</td>\n",
        "      <td>Washington County</td>\n",
-       "      <td>2</td>\n",
-       "      <td>22087</td>\n",
-       "      <td>22247</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>1419</th>\n",
        "      <td>Minnesota</td>\n",
        "      <td>Washington County</td>\n",
-       "      <td>2</td>\n",
-       "      <td>249320</td>\n",
-       "      <td>251597</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2345</th>\n",
        "      <td>Pennsylvania</td>\n",
        "      <td>Washington County</td>\n",
-       "      <td>1</td>\n",
-       "      <td>208175</td>\n",
-       "      <td>208261</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2355</th>\n",
        "      <td>Rhode Island</td>\n",
        "      <td>Washington County</td>\n",
-       "      <td>1</td>\n",
-       "      <td>126430</td>\n",
-       "      <td>126517</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>3163</th>\n",
        "      <td>Wisconsin</td>\n",
        "      <td>Washington County</td>\n",
-       "      <td>2</td>\n",
-       "      <td>133301</td>\n",
-       "      <td>133674</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "            STNAME            CTYNAME  REGION  POPESTIMATE2014  \\\n",
-       "896           Iowa  Washington County       2            22087   \n",
-       "1419     Minnesota  Washington County       2           249320   \n",
-       "2345  Pennsylvania  Washington County       1           208175   \n",
-       "2355  Rhode Island  Washington County       1           126430   \n",
-       "3163     Wisconsin  Washington County       2           133301   \n",
-       "\n",
-       "      POPESTIMATE2015  \n",
-       "896             22247  \n",
-       "1419           251597  \n",
-       "2345           208261  \n",
-       "2355           126517  \n",
-       "3163           133674  "
+       "            STNAME            CTYNAME\n",
+       "896           Iowa  Washington County\n",
+       "1419     Minnesota  Washington County\n",
+       "2345  Pennsylvania  Washington County\n",
+       "2355  Rhode Island  Washington County\n",
+       "3163     Wisconsin  Washington County"
       ]
      },
-     "execution_count": 45,
+     "execution_count": 135,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "def answer_eight():\n",
-    "    df = census_df[census_df.SUMLEV == 50]\n",
-    "    df = df[((df.REGION == 1) | (df.REGION == 2)) & (df.CTYNAME.str.startswith('Washington')) & (df.POPESTIMATE2015 > df.POPESTIMATE2014)]\n",
-    "    return df[['STNAME', 'CTYNAME', 'REGION', 'POPESTIMATE2014','POPESTIMATE2015']]\n",
+    "    census_df_filtered = census_df.loc[(census_df['REGION'].isin((1, 2))) & (census_df['CTYNAME'].str.startswith('Washington')) & (census_df['POPESTIMATE2014'] < census_df['POPESTIMATE2015'])]\n",
+    "    return census_df_filtered[['STNAME', 'CTYNAME']]\n",
     "\n",
     "answer_eight()"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {
   "anaconda-cloud": {},
-  "colab": {
-   "name": "Копия Lab_Python.ipynb",
-   "provenance": [],
-   "toc_visible": true
-  },
   "coursera": {
    "course_slug": "python-data-analysis",
    "graded_item_id": "tHmgx",
@@ -1000,7 +865,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.2"
+   "version": "3.8.3"
   }
  },
  "nbformat": 4,
